@@ -41,7 +41,7 @@ This repository contains implementations of various metaheuristic algorithms to 
     - Self-adaptive mutation
     - (μ, λ) and (μ + λ) selection
     - Multi-dimensional optimization (2D-20D)
-    - CMA-ES implementation
+    - (1+1)-ES with the 1/5 success rule
 
 ## 🧮 Algorithms
 
@@ -66,10 +66,9 @@ This repository contains implementations of various metaheuristic algorithms to 
   - Specialized TSP operators
 
 - **Evolutionary Strategies**
-  - Self-adaptive mutation parameters
-  - Derandomized adaptation
-  - Covariance Matrix Adaptation (CMA-ES)
-  - Multi-parent recombination
+  - (1+1)-ES with the 1/5 success rule
+  - (μ, λ)-ES and (μ + λ)-ES with self-adaptive mutation step sizes
+  - Local discrete recombination
 
 ### Planned Implementations
 - **Particle Swarm Optimization**
@@ -88,40 +87,41 @@ This repository contains implementations of various metaheuristic algorithms to 
 
 #### Tabu Search for TSP
 ```bash
-python "tabu search\tabu-search_tsp.py" --mode [basic|extension|challenge] --file [instance_file] --runs [number_of_runs]
+python tabu_search/tabu-search_tsp.py --mode [basic|extension|challenge] --file [instance_file] --runs [number_of_runs]
 ```
 
 #### Simulated Annealing for Knapsack
 ```bash
-python "simulated annealing\simulated-annealing_knapsack.py"
+python simulated_annealing/simulated-annealing_knapsack.py
 ```
 
 #### Genetic Algorithms
 ```bash
-python "genetic_algorithms\ga_solution.py" --function [beale|ackley|tsp|all] --tsp-file [instance_file] --runs [number_of_runs]
+python genetic_algorithms/ga_solution.py --function [beale|ackley|tsp|all] --tsp-file [instance_file] --runs [number_of_runs]
 ```
 
 #### Evolutionary Strategies
+Open the notebook and run it top to bottom:
 ```bash
-python "evolutionary_strategies\es_solution.py" --function [ackley] --dim [dimensions] --runs [number_of_runs]
+jupyter notebook evolutionary_strategies/ES.ipynb
 ```
 
 ## 🔧 Project Structure
 
 ```
-ecnga\
-├── tabu search\
-│   └── tabu-search_tsp.py
-├── simulated annealing\
+.
+├── tabu_search/
+│   ├── tabu-search_tsp.py
+│   └── input.txt
+├── simulated_annealing/
 │   ├── simulated-annealing_knapsack.py
 │   └── input.txt
-├── genetic_algorithms\
-│   └── ga_solution.py
-├── evolutionary_strategies\
-│   └── es_solution.py
-└── utils\
-    ├── visualization.py
-    └── statistics.py
+├── genetic_algorithms/
+│   ├── ga_solution.py
+│   └── input.txt
+└── evolutionary_strategies/
+    ├── ES.ipynb
+    └── input.txt
 ```
 
 ## 📚 References
@@ -129,7 +129,6 @@ ecnga\
 - Glover, F. (1989). Tabu Search—Part I. ORSA Journal on Computing
 - Kirkpatrick, S., Gelatt, C. D., & Vecchi, M. P. (1983). Optimization by Simulated Annealing
 - Goldberg, D. E. (1989). Genetic Algorithms in Search, Optimization & Machine Learning
-- Hansen, N. (2006). The CMA Evolution Strategy: A Comparing Review
 - Beyer, H.-G., & Schwefel, H.-P. (2002). Evolution Strategies: A Comprehensive Introduction
 
 ## 📄 License
